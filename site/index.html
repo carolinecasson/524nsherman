@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>524 N Sherman Ave, Madison WI — For Sale By Owner</title>
+    <meta name="description" content="Beautiful 3-bed, 3-bath home in Maple Bluff, Madison WI. 2,400 sq ft, built 2016. Solar panels, finished basement, large fenced yard. $750,000. For Sale By Owner.">
+    <meta property="og:title" content="524 N Sherman Ave — For Sale By Owner">
+    <meta property="og:description" content="3 bed, 3 bath · 2,400 sq ft · Built 2016 · Maple Bluff, Madison WI · $750,000">
+    <meta property="og:image" content="images/house12.jpg">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream: #FAF9F6;
+            --white: #FFFFFF;
+            --charcoal: #2C2C2C;
+            --warm-gray: #6B6B6B;
+            --light-gray: #E8E6E3;
+            --accent: #4A6741;
+            --accent-light: #5C7F52;
+            --gold: #C4A55A;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--light-gray);
+            transition: box-shadow 0.3s;
+        }
+        nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 24px;
+        }
+        .nav-address {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; font-weight: 600; color: var(--charcoal);
+            letter-spacing: 0.02em;
+        }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--warm-gray);
+            font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+            text-transform: uppercase; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--charcoal); }
+        .nav-cta {
+            background: var(--accent) !important; color: var(--white) !important;
+            padding: 8px 20px !important; border-radius: 6px;
+            font-size: 0.8rem !important; transition: background 0.2s !important;
+        }
+        .nav-cta:hover { background: var(--accent-light) !important; }
+
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+        .mobile-toggle span { display: block; width: 22px; height: 2px; background: var(--charcoal); margin: 5px 0; transition: 0.3s; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative; height: 85vh; min-height: 500px;
+            overflow: hidden; margin-top: 56px;
+        }
+        .hero-slider { position: relative; width: 100%; height: 100%; }
+        .hero-slide {
+            position: absolute; inset: 0;
+            opacity: 0; transition: opacity 1s ease;
+        }
+        .hero-slide.active { opacity: 1; }
+        .hero-slide img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
+        }
+        .hero-content {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 60px 40px 50px;
+            color: var(--white);
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700; margin-bottom: 8px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            font-weight: 300; opacity: 0.92;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+        }
+        .hero-price {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 600; margin-top: 16px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .hero-dots {
+            position: absolute; bottom: 16px; left: 50%;
+            transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;
+        }
+        .hero-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255,255,255,0.5); border: none; cursor: pointer;
+            transition: background 0.3s;
+        }
+        .hero-dot.active { background: var(--white); }
+
+        /* ── QUICK STATS BAR ── */
+        .stats-bar {
+            background: var(--cream);
+            border-bottom: 1px solid var(--light-gray);
+            padding: 28px 24px;
+        }
+        .stats-inner {
+            max-width: 1000px; margin: 0 auto;
+            display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 600; color: var(--charcoal);
+        }
+        .stat-label {
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 0.08em; color: var(--warm-gray); margin-top: 2px;
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 80px 24px; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 600;
+            text-align: center; margin-bottom: 12px;
+        }
+        .section-subtitle {
+            text-align: center; color: var(--warm-gray);
+            font-size: 0.95rem; font-weight: 300;
+            margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
+        /* ── ABOUT ── */
+        .about-text {
+            font-size: 1.05rem; line-height: 1.85; color: #444;
+            max-width: 750px; margin: 0 auto; text-align: center;
+        }
+
+        /* ── FEATURES ── */
+        .features-section { background: var(--cream); }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: var(--white);
+            border-radius: 12px; padding: 28px 24px;
+            border: 1px solid var(--light-gray);
+            transition: box-shadow 0.3s;
+        }
+        .feature-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .feature-icon {
+            font-size: 1.6rem; margin-bottom: 12px;
+        }
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem; font-weight: 600; margin-bottom: 6px;
+        }
+        .feature-card p {
+            font-size: 0.88rem; color: var(--warm-gray); line-height: 1.55;
+        }
+
+        /* ── GALLERY ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 8px;
+        }
+        .gallery-item {
+            position: relative; overflow: hidden;
+            border-radius: 6px; cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.04); }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none; position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.92);
+            align-items: center; justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox img {
+            max-width: 90vw; max-height: 88vh; object-fit: contain;
+            border-radius: 4px;
+        }
+        .lb-close {
+            position: absolute; top: 16px; right: 20px;
+            background: none; border: none; color: #fff;
+            font-size: 2rem; cursor: pointer; opacity: 0.7;
+            transition: opacity 0.2s; z-index: 1001;
+        }
+        .lb-close:hover { opacity: 1; }
+        .lb-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.15); border: none; color: #fff;
+            font-size: 2rem; cursor: pointer; padding: 16px 12px;
+            border-radius: 6px; opacity: 0.7; transition: opacity 0.2s;
+        }
+        .lb-nav:hover { opacity: 1; background: rgba(255,255,255,0.25); }
+        .lb-prev { left: 12px; }
+        .lb-next { right: 12px; }
+        .lb-counter {
+            position: absolute; bottom: 16px; left: 50%;
+            transform: translateX(-50%); color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        /* ── CONTACT ── */
+        .contact-section { background: var(--charcoal); color: var(--white); }
+        .contact-section .section-title { color: var(--white); }
+        .contact-section .section-subtitle { color: rgba(255,255,255,0.6); }
+        .contact-box {
+            max-width: 500px; margin: 0 auto; text-align: center;
+        }
+        .contact-badge {
+            display: inline-block;
+            background: var(--accent); color: var(--white);
+            padding: 6px 18px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .contact-email {
+            display: inline-block; margin-top: 16px;
+            font-size: 1.15rem; color: var(--gold);
+            text-decoration: none; font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .contact-email:hover { opacity: 0.8; }
+        .contact-address {
+            margin-top: 24px; color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #1a1a1a; color: rgba(255,255,255,0.35);
+            text-align: center; padding: 24px;
+            font-size: 0.78rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; flex-direction: column;
+                position: absolute; top: 56px; left: 0; right: 0;
+                background: var(--white); padding: 20px 24px;
+                border-bottom: 1px solid var(--light-gray);
+                gap: 16px;
+            }
+            .nav-links.open { display: flex; }
+            .mobile-toggle { display: block; }
+            .hero { height: 65vh; }
+            .hero-content { padding: 40px 24px 36px; }
+            .stats-inner { gap: 24px; }
+            section { padding: 60px 20px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px; }
+            .gallery-item { border-radius: 3px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+    <div class="nav-inner">
+        <div class="nav-address">524 N Sherman Ave</div>
+        <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#gallery">Photos</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<section class="hero">
+    <div class="hero-slider" id="heroSlider">
+        <div class="hero-slide active"><img src="images/house12.jpg" alt="524 N Sherman Ave exterior"></div>
+        <div class="hero-slide"><img src="images/house2.jpg" alt="Front entrance with stone accents"></div>
+        <div class="hero-slide"><img src="images/IMG_9596.jpg" alt="Open living room and kitchen"></div>
+        <div class="hero-slide"><img src="images/IMG_9568.jpg" alt="Kitchen with island"></div>
+        <div class="hero-slide"><img src="images/IMG_9555.jpg" alt="Primary bedroom"></div>
+        <div class="hero-slide"><img src="images/IMG_9613.jpg" alt="Large fenced backyard"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>524 N Sherman Avenue</h1>
+        <div class="hero-subtitle">Maple Bluff &middot; Madison, WI 53704</div>
+        <div class="hero-price">$750,000</div>
+    </div>
+    <div class="hero-dots" id="heroDots"></div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Bedrooms</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">3</div>
+            <div class="stat-label">Bathrooms</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2,400</div>
+            <div class="stat-label">Sq Ft</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">0.3</div>
+            <div class="stat-label">Acres</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2016</div>
+            <div class="stat-label">Year Built</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">2-Car+</div>
+            <div class="stat-label">Garage</div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="section-inner">
+        <h2 class="section-title">Welcome Home</h2>
+        <div class="section-subtitle">For Sale By Owner</div>
+        <p class="about-text">
+            Tucked into the sought-after Maple Bluff neighborhood, this modern 2016-built home offers 2,400 square feet of thoughtfully designed living space on a generous third-of-an-acre lot. With three bedrooms, three full bathrooms, and a dedicated exercise room that easily converts to a fourth bedroom, there is room for the whole family to spread out.
+        </p>
+        <br>
+        <p class="about-text">
+            Soaring high ceilings and an open floor plan fill the main level with natural light, anchored by a stunning kitchen featuring a professional BlueStar range, quartz countertops, a walk-in pantry, and a charming breakfast nook. The finished basement adds even more living and entertaining space, complete with its own fireplace and barn door accents.
+        </p>
+        <br>
+        <p class="about-text">
+            Step outside to a large, fully fenced backyard — perfect for kids, pets, and summer entertaining. Practical upgrades include solar panels that bring your electricity bill to virtually zero, a whole-home security system, smart home features, a mudroom with built-in dog spa, radon mitigation, and a sump pump. The extra-large garage offers two full bays plus a third tandem spot for additional storage or parking.
+        </p>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="features-section">
+    <div class="section-inner">
+        <h2 class="section-title">What Makes It Special</h2>
+        <div class="section-subtitle">A modern home designed for everyday living</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">&#9728;</div>
+                <h3>Solar Panels</h3>
+                <p>Owned solar panel system keeps your electricity bill at virtually $0 year-round.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127859;</div>
+                <h3>Chef's Kitchen</h3>
+                <p>Professional BlueStar range, quartz countertops, walk-in pantry, and a cozy breakfast nook.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128204;</div>
+                <h3>Finished Basement</h3>
+                <p>Additional living space with fireplace, barn door accents, and flexible room layouts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127811;</div>
+                <h3>Large Fenced Yard</h3>
+                <p>0.3-acre lot with a fully fenced backyard — ideal for kids, dogs, and outdoor entertaining.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128677;</div>
+                <h3>Oversized Garage</h3>
+                <p>Two-car garage with a third tandem spot for extra parking or storage.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128171;</div>
+                <h3>Exercise Room</h3>
+                <p>Dedicated home gym that can easily convert to a fourth bedroom when needed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128038;</div>
+                <h3>Mudroom &amp; Dog Spa</h3>
+                <p>Built-in mudroom with a dog wash station — no more muddy paws through the house.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128274;</div>
+                <h3>Smart &amp; Secure</h3>
+                <p>Whole-home security system, smart home features, Ring doorbell, radon mitigation, and sump pump.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127968;</div>
+                <h3>High Ceilings</h3>
+                <p>Vaulted and tray ceilings throughout create an airy, open feel on every level.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128167;</div>
+                <h3>Built to Last</h3>
+                <p>Heated downspouts, buried downspouts, micromesh gutter guards, rain barrels, and motion detector lights.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128187;</div>
+                <h3>Home Office</h3>
+                <p>Sound-treated office nook in the basement — perfect for remote work or a quiet reading spot.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#9776;</div>
+                <h3>Custom Kitchen Storage</h3>
+                <p>Pull-out drawers, spice racks, lazy susan corners, and organized cabinetry throughout the kitchen.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+    <div class="section-inner" style="max-width:1200px;">
+        <h2 class="section-title">Photo Tour</h2>
+        <div class="section-subtitle">Browse all 99 photos of the home</div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+    <div class="section-inner">
+        <h2 class="section-title">Interested?</h2>
+        <div class="section-subtitle">This home is for sale by owner. Reach out directly — no agents, no hassle.</div>
+        <div class="contact-box">
+            <div class="contact-badge">For Sale By Owner</div>
+            <br>
+            <a href="mailto:caroline.casson1992@gmail.com" class="contact-email">caroline.casson1992@gmail.com</a>
+            <div class="contact-address">
+                524 N Sherman Avenue<br>
+                Madison, WI 53704
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    &copy; 2026 &middot; 524 N Sherman Ave, Madison WI &middot; For Sale By Owner
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <button class="lb-nav lb-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <button class="lb-nav lb-next" onclick="navLightbox(1)">&#8250;</button>
+    <img id="lbImg" src="" alt="Photo">
+    <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<script>
+// Photo list
+const photos = [
+    "house12","house2","house1",
+    "IMG_9596","IMG_9597","IMG_9598","IMG_9595",
+    "IMG_9568","IMG_9580","IMG_9578","IMG_9579","IMG_9581","IMG_9582","IMG_9583","IMG_9584",
+    "house3",
+    "IMG_9590","IMG_9591","IMG_9589","IMG_9588","IMG_9587","IMG_9586","IMG_9585",
+    "IMG_9555","IMG_9556","IMG_9557","IMG_9558","IMG_9559",
+    "house7",
+    "IMG_9560","IMG_9561","IMG_9562","IMG_9563","IMG_9564","IMG_9565","IMG_9566","IMG_9567",
+    "IMG_9569","IMG_9570","IMG_9571","IMG_9572","IMG_9573","IMG_9574","IMG_9575","IMG_9576","IMG_9577",
+    "house4",
+    "IMG_9592","IMG_9593","IMG_9594",
+    "house5","house6",
+    "IMG_9599","IMG_9600","IMG_9601","IMG_9602","IMG_9603","IMG_9604","IMG_9605","IMG_9606",
+    "house8","house9",
+    "IMG_9607","IMG_9608","IMG_9609","IMG_9610","IMG_9611","IMG_9612",
+    "IMG_9613","IMG_9614","IMG_9615","IMG_9616","IMG_9617","IMG_9618","IMG_9619",
+    "IMG_9620","IMG_9621","IMG_9622","IMG_9623","IMG_9624","IMG_9625","IMG_9626",
+    "IMG_9627","IMG_9628","IMG_9629","IMG_9630","IMG_9631","IMG_9632","IMG_9633",
+    "house11",
+    "IMG_9634","IMG_9635","IMG_9636","IMG_9637","IMG_9638","IMG_9639","IMG_9640","IMG_9641",
+    "house10"
+];
+
+// Build gallery
+const grid = document.getElementById('galleryGrid');
+photos.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'gallery-item';
+    div.onclick = () => openLightbox(i);
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.src = `images/thumbs/${p}.jpg`;
+    img.alt = `Home photo ${i + 1}`;
+    div.appendChild(img);
+    grid.appendChild(div);
+});
+
+// Hero slider
+const slides = document.querySelectorAll('.hero-slide');
+const dotsContainer = document.getElementById('heroDots');
+let currentSlide = 0;
+slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+});
+function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dotsContainer.children[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dotsContainer.children[currentSlide].classList.add('active');
+}
+setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
+
+// Lightbox
+let lbIndex = 0;
+function openLightbox(i) {
+    lbIndex = i;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function navLightbox(dir) {
+    lbIndex = (lbIndex + dir + photos.length) % photos.length;
+    updateLightbox();
+}
+function updateLightbox() {
+    document.getElementById('lbImg').src = `images/${photos[lbIndex]}.jpg`;
+    document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${photos.length}`;
+}
+document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+
+</body>
+</html>
