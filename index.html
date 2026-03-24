@@ -264,6 +264,37 @@
             margin-top: 24px; color: rgba(255,255,255,0.5);
             font-size: 0.9rem;
         }
+        .contact-form {
+            max-width: 480px; margin: 32px auto 0; text-align: left;
+        }
+        .contact-form label {
+            display: block; font-size: 0.8rem; font-weight: 500;
+            letter-spacing: 0.04em; text-transform: uppercase;
+            color: rgba(255,255,255,0.6); margin-bottom: 6px; margin-top: 18px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%; padding: 12px 16px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px; color: var(--white); font-family: 'Inter', sans-serif;
+            font-size: 0.95rem; transition: border-color 0.2s;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none; border-color: var(--accent);
+            background: rgba(255,255,255,0.12);
+        }
+        .contact-form textarea { min-height: 100px; resize: vertical; }
+        .contact-form button {
+            display: block; width: 100%; margin-top: 24px;
+            padding: 14px; background: var(--accent); color: var(--white);
+            border: none; border-radius: 8px; font-family: 'Inter', sans-serif;
+            font-size: 0.95rem; font-weight: 600; letter-spacing: 0.03em;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .contact-form button:hover { background: var(--accent-light); }
 
         /* ── FOOTER ── */
         footer {
@@ -464,11 +495,21 @@
         <div class="section-subtitle">This home is for sale by owner. Reach out directly — no agents, no hassle.</div>
         <div class="contact-box">
             <div class="contact-badge">For Sale By Owner</div>
-            <br>
-            <a href="mailto:caroline.casson1992@gmail.com" class="contact-email">caroline.casson1992@gmail.com</a>
+            <form class="contact-form" action="https://formsubmit.co/caroline.casson1992@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="524 N Sherman Ave — Showing Request">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://524nsherman.com/#contact">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="I'd love to schedule a showing! I'm available on..." required></textarea>
+                <button type="submit">Request a Showing</button>
+            </form>
             <div class="contact-address">
-                524 N Sherman Avenue<br>
-                Madison, WI 53704
+                524 N Sherman Avenue &middot; Madison, WI 53704<br>
+                <a href="mailto:caroline.casson1992@gmail.com" class="contact-email" style="font-size:0.9rem; margin-top:8px;">caroline.casson1992@gmail.com</a>
             </div>
         </div>
     </div>
